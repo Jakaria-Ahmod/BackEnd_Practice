@@ -1,7 +1,10 @@
 const emaiValid = require('../helpers/emailValid.js');
 const User = require('../models/registion.model.js');
 const bcrypt = require('bcrypt');
-const jsonwebtokenGenrator = require('../utils/jwt-utils.js');
+const {
+  jsonwebtokenGenrator,
+  jsonweRfreshGenrator,
+} = require('../utils/jwt-utils.js');
 
 const registerController = async (req, res) => {
   try {
@@ -37,12 +40,16 @@ const registerController = async (req, res) => {
     const payload = { id: newUser._id.toString() };
 
     const Token = jsonwebtokenGenrator(payload);
+    const refreshToken = jsonweRfreshGenrator(payload);
+
+    res;
 
     res.status(200).json({
       secess: true,
       message: 'user create sucessfully ',
       user: newUser,
       Token: Token,
+      refreshToken: refreshToken,
     });
   } catch (error) {
     res.status(404).json({ message: error.message });
