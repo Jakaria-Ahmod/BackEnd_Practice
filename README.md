@@ -78,7 +78,7 @@ User Registration
 
 User Login
 
-JWT Access Token & Refresh Token
+JWT Access Token & Refresh Token 
 
 Protected Routes Middleware
 
